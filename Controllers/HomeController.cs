@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Data;
 using Shop.Models;
@@ -8,7 +9,10 @@ namespace Shop.Controllers
     [Route("v1")]
     public class HomeController : Controller
     {
-        
+
+        [HttpGet]
+        [Route("")]
+        [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Get(
             [FromServices] DataContext context
         )
